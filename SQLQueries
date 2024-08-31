@@ -1,0 +1,45 @@
+//Primeira Questão
+SELECT Nome, Ano from Filmes;
+
+//Segunda Questão
+SELECT Nome, Ano, Duracao from Filmes Order By Ano;
+
+//Terceira Questão
+SELECT Nome, Ano, Duracao from Filmes Where Nome = 'De Volta para o Futuro'
+
+//Quarta Questão
+SELECT Nome, Ano, Duracao from Filmes Where Ano = 1997
+
+//Quinta Questão
+SELECT Nome, Ano, Duracao from Filmes Where Ano > 2000
+
+//Sexta Questão
+SELECT Nome, Ano, Duracao from Filmes Where Duracao > 100 AND Duracao < 150 Order By Duracao;
+
+//Sétima Questão
+SELECT Ano, COUNT(*) Quantidade from Filmes Group By Ano order by Quantidade desc
+
+//Oitava Questão
+SELECT Id, PrimeiroNome, UltimoNome, Genero from Atores Where Genero ='M'
+
+//Nona Questão
+SELECT Id, PrimeiroNome, UltimoNome, Genero from Atores Where Genero ='F' Order By PrimeiroNome, UltimoNome
+
+//Décima Questão
+SELECT f.Nome AS NomeFilme, g.Genero AS NomeGenero
+FROM dbo.FilmesGenero fg
+    INNER JOIN dbo.Filmes f ON fg.IdFilme = f.Id
+    INNER JOIN dbo.Generos g ON fg.IdGenero = g.Id;
+
+//Décima Primeira Questão
+SELECT f.Nome AS NomeFilme, g.Genero AS Genero
+FROM dbo.FilmesGenero fg
+    INNER JOIN dbo.Filmes f ON fg.IdFilme = f.Id
+    INNER JOIN dbo.Generos g ON fg.IdGenero = g.Id 
+  Where Genero = 'Mistério';
+
+//Décima Segunda Questão
+SELECT f.Nome AS NomeFilme, CONCAT(a.PrimeiroNome, ' ', a.UltimoNome) AS NomeCompleto, Papel 
+from ElencoFilme ef
+  INNER JOIN Filmes f ON ef.IdFilme = f.Id
+  INNER JOIN Atores a ON ef.IdAtor = a.Id
